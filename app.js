@@ -20,8 +20,8 @@ const shopController = require('./controllers/shop');
 const isAuth = require('./middleware/is-auth');
 const User = require('./models/user');
 
-// const MONGODB_URI = `mongodb+srv://amanjot11:amanjot11@cluster0.0ckxj.mongodb.net/shop?retryWrites=true&w=majority`
-const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.0ckxj.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true&w=majority`
+const MONGODB_URI = `mongodb+srv://amansky:amanjot11@cluster0.06niu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+// const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.0ckxj.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true&w=majority`
 
 const app = express();
 const store = new MongoDBStore({
@@ -126,15 +126,15 @@ app.get('/500', errorController.get500);
 
 app.use(errorController.get404);
 
-app.use((error, req, res, next) => {
-  // res.status(error.httpStatusCode).render(...);
-  // res.redirect('/500');
-  res.status(500).render('500', {
-    pageTitle: 'Error!',
-    path: '/500',
-    isAuthenticated: req.session.isLoggedIn
-  });
-});
+// app.use((error, req, res, next) => {
+//   // res.status(error.httpStatusCode).render(...);
+//   // res.redirect('/500');
+//   res.status(500).render('500', {
+//     pageTitle: 'Error!',
+//     path: '/500',
+//     isAuthenticated: req.session.isLoggedIn
+//   });
+// });
 
 mongoose
   .connect(MONGODB_URI)
